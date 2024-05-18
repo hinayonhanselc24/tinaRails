@@ -1,0 +1,11 @@
+<h1>Table <%= @table.number %> (Seats: <%= @table.seats %>)</h1>
+<h2>Reservations</h2>
+<ul>
+  <% @reservations.each do |reservation| %>
+    <li><%= reservation.name %> - <%= reservation.reservation_time %></li>
+  <% end %>
+</ul>
+<%= link_to 'New Reservation', new_restaurant_table_reservation_path(@table.restaurant, @table) %>
+
+
+<%= button_to "Logout", logout_path, method: :delete, class: "logout-button" %>

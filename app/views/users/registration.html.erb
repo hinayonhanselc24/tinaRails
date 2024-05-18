@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Background Image Example</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://wallpapers.com/images/hd/cooking-background-dg5u6vitzfnv3mrw.jpg'); 
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px; /* Adjust the maximum width as needed */
+    width: 100%; 
+    color: black;
+}
+
+    .form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .input-field {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .checkbox-field {
+        margin-right: 10px;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .submit-button:hover {
+        background-color: #45a049;
+    }
+
+    .register {
+        margin-top: 15px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .color {
+        color: #4CAF50;
+    }
+</style>
+</head>
+<body>
+    <div class="background-image-container">
+    <!-- Move the form outside of the background image container -->
+    </div>
+
+    <div class="form-container">
+        <div class="form">
+            <form action="/users" method="POST" class="max-w-sm mx-auto">
+            <div class="mb-5">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+            </div>
+            <div class="mb-5">
+                <label for="fname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+                <input type="text" id="fname" name="user[fname]" class="input-field" placeholder="" required />
+            </div>
+            <div class="mb-5">
+                <label for="lname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+                <input type="text" id="lname" name="user[lname]" class="input-field" placeholder="" required />
+            </div>
+            <div class="mb-5">
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                <input type="email" id="email" name="user[email]" class="input-field" placeholder="" required />
+            </div>
+            <div class="mb-5">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                <input type="password" id="password" name="user[password]" class="input-field" required />
+            </div>
+            <div class="mb-5">
+                <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password Confirmation</label>
+                <input type="password" id="password_confirmation" name="user[password_confirmation]" class="input-field" required />
+            </div>
+            <button type="submit" class="submit-button">Register</button>
+            </form>    
+            <p class="register">Already an account? <a class="color" href="/index">Login Form</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

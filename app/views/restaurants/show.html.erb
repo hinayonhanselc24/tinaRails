@@ -1,0 +1,11 @@
+<h1><%= @restaurant.name %></h1>
+<p><%= @restaurant.address %></p>
+<h2>Tables</h2>
+<ul>
+  <% @restaurant.tables.each do |table| %>
+    <li><%= link_to "Table ##{table.number} (Seats: #{table.seats})", restaurant_table_path(@restaurant, table) %></li>
+  <% end %>
+</ul>
+
+
+<%= button_to "Logout", logout_path, method: :delete, class: "logout-button" %>

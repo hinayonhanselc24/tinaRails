@@ -1,0 +1,32 @@
+<h1>Reservations for Table <%= @table.number %></h1>
+<%= link_to 'New Reservation', new_restaurant_table_reservation_path(@table.restaurant, @table) %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Reservation Time</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.name %></td>
+        <td><%= reservation.email %></td>
+        <td><%= reservation.reservation_time %></td>
+        <td>
+          <form id="cancel-form-<%= reservation.id %>" action="<%= restaurant_table_reservation_path(reservation.table.restaurant, reservation.table, reservation) %>" method="POST" style="display: none;">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <button type="submit" onclick="return confirm('Are you sure you want to cancel this reservation?')">Cancel</button>
+          </form>
+          <button type="button" onclick="document.getElementById('cancel-form-<%= reservation.id %>').submit();">Cancel</button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= button_to "Logout", logout_path, method: :delete, class: "logout-button" %>

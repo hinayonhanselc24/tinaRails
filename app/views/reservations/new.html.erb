@@ -1,0 +1,32 @@
+<h1>New Reservation for Table <%= @table.number %></h1>
+<%= form_with model: [@table.restaurant, @table, @reservation], local: true do |form| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+      <ul>
+        <% @reservation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+  <div>
+    <%= form.label :reservation_time %>
+    <%= form.datetime_select :reservation_time %>
+  </div>
+  <div>
+    <%= form.submit 'Create Reservation' %>
+  </div>
+<% end %>
+
+
+<%= button_to "Logout", logout_path, method: :delete, class: "logout-button" %>
